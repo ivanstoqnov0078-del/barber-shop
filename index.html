@@ -354,7 +354,42 @@ footer {
       background: #080808;
       border-top: 1px solid #80652c;
       color: #aaa;
-    }
+    
+<script>
+  const dateInput = document.getElementById("date");
+  const today = new Date();
+  const localToday = new Date(
+    today.getTime() - today.getTimezoneOffset() * 60000
+  ).toISOString().slice(0, 10);
+
+  dateInput.min = localToday;
+
+  document.getElementById("bookingForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const service = document.getElementById("service").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const message = document.getElementById("message").value.trim();
+
+    const text =
+      "Заявка за час - BARBER SHOP, Кюстендил\n\n" +
+      "Име: " + name + "\n" +
+      "Телефон: " + phone + "\n" +
+      "Услуга: " + service + "\n" +
+      "Дата: " + date + "\n" +
+      "Час: " + time + "\n" +
+      "Допълнителна информация: " + (message || "Няма");
+
+    const whatsappURL =
+      "https://wa.me/359896030094?text=" + encodeURIComponent(text);
+
+    window.open(whatsappURL, "_blank");
+  });
+</script>
+
   </style>
 </head>
 
