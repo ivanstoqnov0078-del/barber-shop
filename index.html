@@ -376,30 +376,33 @@ footer {
 
   dateInput.min = localToday;
 
-  document.getElementById("bookingForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+document.getElementById("bookingForm").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const service = document.getElementById("service").value;
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
-    const message = document.getElementById("message").value.trim();
+  const form = this;
 
-    const text =
-      "Заявка за час - BARBER SHOP, Кюстендил\n\n" +
-      "Име: " + name + "\n" +
-      "Телефон: " + phone + "\n" +
-      "Услуга: " + service + "\n" +
-      "Дата: " + date + "\n" +
-      "Час: " + time + "\n" +
-      "Допълнителна информация: " + (message || "Няма");
-
-    const whatsappURL =
-      "https://wa.me/359896030094?text=" + encodeURIComponent(text);
-
-    window.open(whatsappURL, "_blank");
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: {
+      "Accept": "application/json"
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      document.getElementById("result").textContent =
+        "Заявката е изпратена успешно! Ще се свържем с теб за потвърждение.";
+      form.reset();
+    } else {
+      document.getElementById("result").textContent =
+        "Не успяхме да изпратим заявката. Моля, опитай отново.";
+    }
+  })
+  .catch(() => {
+    document.getElementById("result").textContent =
+      "Възникна проблем. Моля, опитай отново.";
   });
+});
 </script>
 
   </style>
