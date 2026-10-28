@@ -1919,10 +1919,7 @@ footer {
 
     dateInput.min = localToday;
 
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("result").textContent =
-        "Формата е попълнена, но заявката още не е изпратена до бръснарницата. Нужно е да свържем формата с услуга за записвания.";
+    
     });
   </script>
 </body>
@@ -2134,8 +2131,7 @@ footer {
   <section id="booking">
     <h2>Запази своя час</h2>
     <p>Попълни формата, за да подготвиш заявка за час.</p>
-
-    <form class="booking" id="bookingForm">
+<form class="booking" id="bookingForm" action="https://formsubmit.co/ivanstoqnov0078@gmail.com" method="POST">
       <label for="name">Твоето име</label>
       <input id="name" name="name" required placeholder="Въведи име">
 
