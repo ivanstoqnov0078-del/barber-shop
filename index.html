@@ -388,20 +388,23 @@ document.getElementById("bookingForm").addEventListener("submit", function(event
       "Accept": "application/json"
     }
   })
-  .then(response => {
-    if (response.ok) {
-      document.getElementById("result").textContent =
-        "Заявката е изпратена успешно! Ще се свържем с теб за потвърждение.";
-      form.reset();
-    } else {
-      document.getElementById("result").textContent =
-        "Не успяхме да изпратим заявката. Моля, опитай отново.";
-    }
-  })
-  .catch(() => {
+  .then(async response => {
+  const data = await response.json();
+
+  if (response.ok && data.success) {
     document.getElementById("result").textContent =
-      "Възникна проблем. Моля, опитай отново.";
-  });
+      "Заявката е изпратена успешно! Ще се свържем с теб за потвърждение.";
+    form.reset();
+  } else {
+    document.getElementById("result").textContent =
+      "Неуспешно изпращане: " + (data.message || "Провери настройките на формата.");
+  }
+})
+.catch(error => {
+  document.getElementById("result").textContent =
+    "Възникна проблем с връзката. Опитай отново.";
+  console.error(error);
+});
 });
 </script>
 
