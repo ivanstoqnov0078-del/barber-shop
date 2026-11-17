@@ -560,11 +560,16 @@ footer span {
   <p id="admin-message"></p>
 </section>
 
-<button onclick="document.getElementById('admin-login').style.display='block'"
-  style="position:fixed; bottom:15px; right:15px; background:#d8b45a; padding:12px; border:0; cursor:pointer;">
+<button type="button" id="open-admin-button"
+  style="position:fixed; bottom:15px; right:15px; background:#d8b45a; padding:12px; border:0; cursor:pointer; z-index:9999;">
   Вход за администратора
 </button>
 
+<script>
+document.getElementById("open-admin-button").addEventListener("click", function () {
+  document.getElementById("admin-login").style.display = "block";
+});
+</script>
 <script>
 const SUPABASE_URL = "https://ypahztaolbszogpcifld.supabase.co";
 const SUPABASE_KEY = "sb_publishable_arkExqm26eR9h1lHvSGB4w_atkh7nyZ;
