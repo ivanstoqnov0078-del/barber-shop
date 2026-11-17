@@ -1,2254 +1,544 @@
+
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-<meta name="google-site-verification" content="UGs5bNyVgZGv89JDsksxQH8TY6fDINUT7RVR8CngWeY" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barber Shop | Кюстендил</title>
+<meta name="description" content="IVAN BARBER ACADEMY – обучение за бъдещи бръснари. Направи първата крачка към професията барбер.">
+<meta name="theme-color" content="#090909">
+<title>IVAN BARBER ACADEMY | Обучение за бръснари</title>
 
 <style>
+:root {
+  --gold: #d8b45a;
+  --gold-light: #f1d58a;
+  --black: #090909;
+  --panel: #151515;
+  --muted: #b9b9b9;
+}
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: white;
-    line-height: 1.6;
+  font-family: Arial, sans-serif;
+  background: var(--black);
+  color: #fff;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 header {
-    min-height: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px;
-background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)), url("ChatGPT Image Oct 7, 2026, 12_40_39 PM.png");
-background-size: cover;
-background-position: center;    (rgba(0,0,0,0.65), rgba(0,0,0,0.8)), #222;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(5,5,5,.96);
+  border-bottom: 1px solid #6f592c;
+  padding: 15px 6%;
 }
 
-header h1 {
-    font-size: 55px;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-header p {
-    font-size: 20px;
-    color: #ccc;
+.logo {
+  color: var(--gold);
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 19px;
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 60px 20px;
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.hero {
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  background:
+    radial-gradient(ellipse at center, #302719 0%, #111 45%, #050505 100%);
+  border-bottom: 1px solid #80652e;
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 8vw, 76px);
+  line-height: 1.1;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  color: #ddd;
+  max-width: 650px;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.button {
+  display: inline-block;
+  background: linear-gradient(135deg, #f1d58a, #b58b38);
+  color: #111;
+  padding: 13px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
 
 section {
-    margin-bottom: 60px;
+  padding: 80px 7%;
+  scroll-margin-top: 80px;
 }
 
-h2 {
-    font-size: 32px;
-    margin-bottom: 25px;
-    border-left: 4px solid #c9a227;
-    padding-left: 15px;
+.section-title {
+  text-align: center;
+  margin-bottom: 38px;
 }
 
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+.section-title span {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
-.service {
-    background: #1c1c1c;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #333;
+.section-title h2 {
+  font-size: clamp(27px, 5vw, 42px);
+  margin-top: 8px;
 }
 
-.service h3 {
-    margin-bottom: 10px;
-    font-size: 21px;
+.section-title p {
+  color: var(--muted);
+  max-width: 650px;
+  margin: 10px auto 0;
 }
 
-.price {
-    color: #c9a227;
-    font-size: 22px;
-    font-weight: bold;
+.about {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+  color: #ddd;
+  font-size: 17px;
 }
 
-.info {
-    background: #1c1c1c;
-    padding: 30px;
-    border-radius: 12px;
-    margin-bottom: 20px;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
 }
 
-.info p {
-    margin: 10px 0;
-    font-size: 18px;
+.card {
+  background: var(--panel);
+  border: 1px solid #514326;
+  border-radius: 8px;
+  padding: 28px 23px;
+  transition: .2s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+
+.card .number {
+  color: var(--gold);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card h3 {
+  color: var(--gold-light);
+  margin: 12px 0;
+}
+
+.card p {
+  color: var(--muted);
+}
+
+.audience {
+  background: #101010;
+  border-top: 1px solid #302719;
+  border-bottom: 1px solid #302719;
+}
+
+.audience-list {
+  max-width: 800px;
+  margin: auto;
+  display: grid;
+  gap: 15px;
+}
+
+.audience-item {
+  background: #191919;
+  border-left: 3px solid var(--gold);
+  padding: 17px 20px;
+  color: #ddd;
+}
+
+.application {
+  background:
+    radial-gradient(ellipse at top, #292116 0%, #090909 65%);
+}
+
+.form-wrap {
+  max-width: 650px;
+  margin: auto;
+  background: #151515;
+  border: 1px solid #80652e;
+  border-radius: 9px;
+  padding: 30px;
+}
+
+.form-wrap label {
+  display: block;
+  margin: 15px 0 6px;
+  color: var(--gold-light);
+}
+
+.form-wrap input,
+.form-wrap select,
+.form-wrap textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #514326;
+  border-radius: 5px;
+  background: #090909;
+  color: white;
+  font-size: 15px;
+}
+
+.form-wrap textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-wrap input:focus,
+.form-wrap select:focus,
+.form-wrap textarea:focus {
+  outline: 1px solid var(--gold);
+}
+
+.form-wrap button {
+  width: 100%;
+  margin-top: 22px;
+  font-size: 16px;
+}
+
+.form-note {
+  color: #aaa;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.contacts {
+  text-align: center;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.contact-button {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  padding: 12px 22px;
+  border-radius: 5px;
+  color: var(--gold-light);
+  transition: .2s;
+}
+
+.contact-button:hover {
+  background: var(--gold);
+  color: #111;
 }
 
 .phone {
-    color: #c9a227;
-    text-decoration: none;
-    font-weight: bold;
+  color: var(--gold);
+  font-size: 21px;
+  margin-top: 25px;
 }
 
 footer {
-    text-align: center;
-    padding: 30px;
-    background: #080808;
-    color: #888;
+  text-align: center;
+  padding: 25px 15px;
+  background: #050505;
+  border-top: 1px solid #514326;
+  color: #888;
+  font-size: 13px;
 }
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 38px;
-    }
+footer span {
+  color: var(--gold);
+}
 
-    header {
-        min-height: 350px;
-    }
+@media (max-width: 650px) {
+  header {
+    padding: 13px 5%;
+  }
 
-    h2 {
-        font-size: 27px;
-    }
+  nav {
+    justify-content: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  section {
+    padding: 60px 6%;
+  }
+
+  .form-wrap {
+    padding: 22px 17px;
+  }
+
+  .hero {
+    min-height: 78vh;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- IVAN BARBER - LUXURY INTRO -->
-<section id="ivan-barber-intro" style="min-height:75vh; padding:70px 20px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(180deg,#292318 0%,#111111 55%,#050505 100%); color:#ffffff; border-bottom:1px solid #b99748;">
-  <div style="font-size:42px; color:#d8b45a; margin-bottom:12px;">✂</div>
-  <p style="letter-spacing:5px; color:#d8b45a; font-size:13px; margin:0 0 12px;">KYUSTENDIL • BULGARIA</p>
-  <h1 style="font-size:clamp(38px,7vw,72px); letter-spacing:4px; margin:0; color:#d8b45a;">IVAN BARBER</h1>
-  <div style="width:90px; height:2px; background:#d8b45a; margin:25px auto;"></div>
-  <h2 style="font-size:clamp(23px,4vw,38px); margin:0 0 15px; line-height:1.3;">ТВОЯТ СТИЛ.<br><span style="color:#d8b45a;">МОЯТА РАБОТА.</span></h2>
-  <p style="max-width:480px; color:#cccccc; font-size:16px; line-height:1.8;">Професионални мъжки подстрижки.<br>Прецизност във всеки детайл.</p>
-  <a href="#moqta-rabota" style="display:inline-block; margin-top:25px; padding:15px 28px; border:1px solid #d8b45a; border-radius:5px; color:#d8b45a; text-decoration:none; font-weight:bold; letter-spacing:1px;">ВИЖ МОЯТА РАБОТА ↓</a>
-</section>
-<!-- END IVAN BARBER INTRO -->
-
 <header>
-    <div>
-        <h1>BARBER SHOP</h1>
-        <p>Твоят стил. Твоят избор.</p>
+  <nav>
+    <a class="logo" href="#home">IVAN BARBER ACADEMY</a>
+
+    <div class="nav-links">
+      <a href="#home">Начало</a>
+      <a href="#about">Академията</a>
+      <a href="#program">Програма</a>
+      <a href="#application">Кандидатстване</a>
+      <a href="#contacts">Контакти</a>
     </div>
+  </nav>
 </header>
 
-<div class="container">
+<main>
 
-<section>
-    <h2>Услуги и цени</h2>
+<section class="hero" id="home">
+  <div class="eyebrow">KYUSTENDIL • BULGARIA</div>
 
-    <div class="services">
+  <h1>IVAN <span>BARBER</span><br>ACADEMY</h1>
 
-        <div class="service">
-            <h3>Подстригване</h3>
-            <p class="price">7 €</p>
-        </div>
+  <p>
+    Направи първата крачка към света на бръснарството.
+    Научи основите, развий уменията си и изгради своя път
+    като бъдещ професионалист.
+  </p>
 
-        <div class="service">
-            <h3>Вежди</h3>
-            <p class="price">2 €</p>
-        </div>
-
-        <div class="service">
-            <h3>Брада</h3>
-            <p class="price">3 €</p>
-        </div>
-
-        <div class="service">
-            <h3>Комплект</h3>
-            <p class="price">10 €</p>
-        </div>
-
-    </div>
+  <a class="button" href="#application">КАНДИДАТСТВАЙ СЕГА</a>
 </section>
 
-<section>
-    <h2>Работно време</h2>
+<section id="about">
+  <div class="section-title">
+    <span>За нас</span>
+    <h2>Добре дошъл в академията</h2>
+  </div>
 
-    <div class="info">
-        <p>📅 От неделя до петък</p>
-        <p>🕐 13:00 – 20:00</p>
-    </div>
-</section>
-
-<section>
-    <h2>Контакти</h2>
-
-    <div class="info">
-        <p>📞 Телефон:
-            <a class="phone" href="tel:0896030094">
-                0896030094
-            </a>
-        </p>
-
-        <p>📍 Адрес: ул. Банска 36, Кюстендил</p>
-    </div>
-</section>
-
-</div>
-
-<footer>
-    © 2026 Barber Shop – Кюстендил
-</footer>
-
-</body>
-</html> 
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Shop | Кюстендил</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      min-height: 390px;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #493817 0%, #17130d 40%, #090909 80%);
-      border-bottom: 2px solid #c9a44c;
-    }
-
-    header .symbol {
-      font-size: 55px;
-    }
-
-    h1 {
-      color: #d8b45a;
-      font-size: clamp(32px, 7vw, 54px);
-      margin: 12px 0;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      color: #ddd;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d8b45a;
-      color: #111;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: #f0d58b;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 22px;
-      padding: 18px 10px;
-      background: #181818;
-      border-bottom: 1px solid #383024;
-    }
-
-    nav a {
-      color: #e2c16e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px 22px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #d8b45a;
-      font-size: 29px;
-      margin-top: 0;
-    }
-
-    .service {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 17px;
-      margin: 10px 0;
-      background: #1b1b1b;
-      border: 1px solid #3b3323;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .price {
-      color: #e5c36d;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .info {
-      line-height: 1.9;
-      color: #ddd;
-    }
-
-    .booking {
-      background: #191610;
-      border: 1px solid #80652c;
-      border-radius: 12px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      color: #e4c775;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #101010;
-      color: white;
-      font-size: 16px;
-    }
-
-    .booking .btn {
-      width: 100%;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: #080808;
-      border-top: 1px solid #80652c;
-      color: #aaa;
-    
-<script>
-  const dateInput = document.getElementById("date");
-  const today = new Date();
-  const localToday = new Date(
-    today.getTime() - today.getTimezoneOffset() * 60000
-  ).toISOString().slice(0, 10);
-
-  dateInput.min = localToday;
-
-document.getElementById("bookingForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const form = this;
-
-  fetch(form.action, {
-    method: "POST",
-    body: new FormData(form),
-    headers: {
-      "Accept": "application/json"
-    }
-  })
-  .then(async response => {
-  const data = await response.json();
-
-  if (response.ok && data.success) {
-    document.getElementById("result").textContent =
-      "Заявката е изпратена успешно! Ще се свържем с теб за потвърждение.";
-    form.reset();
-  } else {
-    document.getElementById("result").textContent =
-      "Неуспешно изпращане: " + (data.message || "Провери настройките на формата.");
-  }
-})
-.catch(error => {
-  document.getElementById("result").textContent =
-    "Възникна проблем с връзката. Опитай отново.";
-  console.error(error);
-});
-});
-</script>
-
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="symbol">✂️</div>
-    <h1>BARBER SHOP</h1>
-    <p>Стил. Прецизност. Класа.</p>
-    <a class="btn" href="#booking">Запази час</a>
-  </header>
-
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#hours">Работно време</a>
-    <a href="#contact">Контакти</a>
-    <a href="#booking">Запази час</a>
-  </nav>
-
-  <section id="services">
-    <h2>Нашите услуги</h2>
-    <div class="service">
-      <span>✂️ Подстригване</span>
-      <span class="price">7 €</span>
-    </div>
-    <div class="service">
-      <span>👌 Оформяне на вежди</span>
-      <span class="price">2 €</span>
-    </div>
-    <div class="service">
-      <span>🧔 Оформяне на брада</span>
-      <span class="price">3 €</span>
-    </div>
-    <div class="service">
-      <span>⭐ Комплект</span>
-      <span class="price">10 €</span>
-    </div>
-  </section>
-
-  <section id="hours">
-    <h2>Работно време</h2>
-    <p class="info">🕒 От неделя до петък</p>
-  </section>
-
-  <section id="booking">
-    <h2>Запази своя час</h2>
-    <p>Попълни формата, за да подготвиш заявка за час.</p>
-
-    <form class="booking" id="bookingForm" action="https://formsubmit.co/ivanstoqnov0078@gmail.com" method="POST">
-      <label for="name">Твоето име</label>
-      <input id="name" name="name" required placeholder="Въведи име">
-
-      <label for="phone">Телефон за връзка</label>
-      <input id="phone" name="phone" type="tel" required placeholder="Въведи телефон">
-
-      <label for="service">Избери услуга</label>
-      <select id="service" name="service" required>
-        <option value="">Избери услуга</option>
-        <option>Подстригване — 7 €</option>
-        <option>Вежди — 2 €</option>
-        <option>Брада — 3 €</option>
-        <option>Комплект — 10 €</option>
-      </select>
-
-      <label for="date">Желана дата</label>
-      <input id="date" name="date" type="date" required>
-
-      <label for="time">Желан час</label>
-      <input id="time" name="time" type="time" required>
-
-      <label for="message">Допълнителна информация (по желание)</label>
-      <textarea id="message" name="message" rows="3"
-        placeholder="Напиши съобщение"></textarea>
-
-      <button class="btn" type="submit">Подготви заявката</button>
-
-      <p class="note">
-        Следващата стъпка е да свържем формата с телефон или услуга
-        за записвания, за да получаваш заявките наистина.
-      </p>
-    </form>
-    <p id="result" class="info" aria-live="polite"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Контакти</h2>
-    <p class="info">
-      📍 ул. Банска 36, Кюстендил
+  <div class="about">
+    <p>
+      IVAN BARBER ACADEMY е насочена към хора, които искат
+      да навлязат в света на мъжкото подстригване и
+      бръснарството.
     </p>
-    <p class="info">
-      📞 Телефонът за контакт ще добавим тук.
+    <p style="margin-top:18px">
+      Целта е да се запознаеш с основните техники,
+      инструментите, хигиената и работата с клиенти,
+      като развиваш уменията си стъпка по стъпка.
     </p>
-  </section>
-
-  <footer>
-    <p>© BARBER SHOP | Кюстендил</p>
-    <p>Стилът започва оттук. 💈</p>
-  </footer>
-
-
-<script>
-  const dateInput = document.getElementById("date");
-  const today = new Date();
-  const localToday = new Date(
-    today.getTime() - today.getTimezoneOffset() * 60000
-  ).toISOString().slice(0, 10);
-
-  dateInput.min = localToday;
-document.getElementById("bookingForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const form = this;
-  const result = document.getElementById("result");
-
-  fetch(form.action, {
-    method: "POST",
-    body: new FormData(form),
-    headers: {
-      "Accept": "application/json"
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      result.textContent = "Заявката е изпратена успешно! Ще се свържем с теб за потвърждение.";
-      form.reset();
-    } else {
-      result.textContent = "Неуспешно изпращане. Опитай отново.";
-    }
-  })
-  .catch(() => {
-    result.textContent = "Възникна проблем с изпращането. Опитай отново.";
-  });
-});
-  
-</script>
-
-  </script>
- 
-<!-- Messenger -->
-<a href="https://m.me/100080136356199"
-   target="_blank"
-   style="display:inline-block; background:#0084FF; color:white; padding:14px 22px; border-radius:10px; text-decoration:none; font-weight:bold; margin:10px;">
-  💬 Пиши ми в Messenger
-</a>
-   
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Shop | Кюстендил</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      min-height: 390px;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #493817 0%, #17130d 40%, #090909 80%);
-      border-bottom: 2px solid #c9a44c;
-    }
-
-    header .symbol {
-      font-size: 55px;
-    }
-
-    h1 {
-      color: #d8b45a;
-      font-size: clamp(32px, 7vw, 54px);
-      margin: 12px 0;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      color: #ddd;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d8b45a;
-      color: #111;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: #f0d58b;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 22px;
-      padding: 18px 10px;
-      background: #181818;
-      border-bottom: 1px solid #383024;
-    }
-
-    nav a {
-      color: #e2c16e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px 22px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #d8b45a;
-      font-size: 29px;
-      margin-top: 0;
-    }
-
-    .service {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 17px;
-      margin: 10px 0;
-      background: #1b1b1b;
-      border: 1px solid #3b3323;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .price {
-      color: #e5c36d;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .info {
-      line-height: 1.9;
-      color: #ddd;
-    }
-
-    .booking {
-      background: #191610;
-      border: 1px solid #80652c;
-      border-radius: 12px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      color: #e4c775;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #101010;
-      color: white;
-      font-size: 16px;
-    }
-
-    .booking .btn {
-      width: 100%;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: #080808;
-      border-top: 1px solid #80652c;
-      color: #aaa;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="symbol">✂️</div>
-    <h1>BARBER SHOP</h1>
-    <p>Стил. Прецизност. Класа.</p>
-    <a class="btn" href="#booking">Запази час</a>
-  </header>
-
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#hours">Работно време</a>
-    <a href="#contact">Контакти</a>
-    <a href="#booking">Запази час</a>
-  </nav>
-
-  <section id="services">
-    <h2>Нашите услуги</h2>
-    <div class="service">
-      <span>✂️ Подстригване</span>
-      <span class="price">7 €</span>
-    </div>
-    <div class="service">
-      <span>👌 Оформяне на вежди</span>
-      <span class="price">2 €</span>
-    </div>
-    <div class="service">
-      <span>🧔 Оформяне на брада</span>
-      <span class="price">3 €</span>
-    </div>
-    <div class="service">
-      <span>⭐ Комплект</span>
-      <span class="price">10 €</span>
-    </div>
-  </section>
-
-  <section id="hours">
-    <h2>Работно време</h2>
-    <p class="info">🕒 От неделя до петък</p>
-  </section>
-
-  <section id="booking">
-    <h2>Запази своя час</h2>
-    <p>Попълни формата, за да подготвиш заявка за час.</p>
-
-    <form class="booking" id="bookingForm">
-      <label for="name">Твоето име</label>
-      <input id="name" name="name" required placeholder="Въведи име">
-
-      <label for="phone">Телефон за връзка</label>
-      <input id="phone" name="phone" type="tel" required placeholder="Въведи телефон">
-
-      <label for="service">Избери услуга</label>
-      <select id="service" name="service" required>
-        <option value="">Избери услуга</option>
-        <option>Подстригване — 7 €</option>
-        <option>Вежди — 2 €</option>
-        <option>Брада — 3 €</option>
-        <option>Комплект — 10 €</option>
-      </select>
-
-      <label for="date">Желана дата</label>
-      <input id="date" name="date" type="date" required>
-
-      <label for="time">Желан час</label>
-      <input id="time" name="time" type="time" required>
-
-      <label for="message">Допълнителна информация (по желание)</label>
-      <textarea id="message" name="message" rows="3"
-        placeholder="Напиши съобщение"></textarea>
-
-      <button class="btn" type="submit">Подготви заявката</button>
-
-      <p class="note">
-        Следващата стъпка е да свържем формата с телефон или услуга
-        за записвания, за да получаваш заявките наистина.
-      </p>
-    </form>
-    <p id="result" class="info" aria-live="polite"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Контакти</h2>
-    <p class="info">
-      📍 ул. Банска 36, Кюстендил
-    </p>
-    <p class="info">
-      📞 Телефонът за контакт ще добавим тук.
-    </p>
-  </section>
-
-  <footer>
-    <p>© BARBER SHOP | Кюстендил</p>
-    <p>Стилът започва оттук. 💈</p>
-  </footer>
-
-  <script>
-    const dateInput = document.getElementById("date");
-    const today = new Date();
-    const localToday = new Date(
-      today.getTime() - today.getTimezoneOffset() * 60000
-    ).toISOString().slice(0, 10);
-
-    dateInput.min = localToday;
-
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("result").textContent =
-        "Формата е попълнена, но заявката още не е изпратена до бръснарницата. Нужно е да свържем формата с услуга за записвания.";
-    });
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Shop | Кюстендил</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      min-height: 390px;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #493817 0%, #17130d 40%, #090909 80%);
-      border-bottom: 2px solid #c9a44c;
-    }
-
-    header .symbol {
-      font-size: 55px;
-    }
-
-    h1 {
-      color: #d8b45a;
-      font-size: clamp(32px, 7vw, 54px);
-      margin: 12px 0;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      color: #ddd;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d8b45a;
-      color: #111;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: #f0d58b;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 22px;
-      padding: 18px 10px;
-      background: #181818;
-      border-bottom: 1px solid #383024;
-    }
-
-    nav a {
-      color: #e2c16e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px 22px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #d8b45a;
-      font-size: 29px;
-      margin-top: 0;
-    }
-
-    .service {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 17px;
-      margin: 10px 0;
-      background: #1b1b1b;
-      border: 1px solid #3b3323;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .price {
-      color: #e5c36d;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .info {
-      line-height: 1.9;
-      color: #ddd;
-    }
-
-    .booking {
-      background: #191610;
-      border: 1px solid #80652c;
-      border-radius: 12px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      color: #e4c775;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #101010;
-      color: white;
-      font-size: 16px;
-    }
-
-    .booking .btn {
-      width: 100%;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: #080808;
-      border-top: 1px solid #80652c;
-      color: #aaa;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="symbol">✂️</div>
-    <h1>BARBER SHOP</h1>
-    <p>Стил. Прецизност. Класа.</p>
-    <a class="btn" href="#booking">Запази час</a>
-  </header>
-
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#hours">Работно време</a>
-    <a href="#contact">Контакти</a>
-    <a href="#booking">Запази час</a>
-  </nav>
-
-  <section id="services">
-    <h2>Нашите услуги</h2>
-    <div class="service">
-      <span>✂️ Подстригване</span>
-      <span class="price">7 €</span>
-    </div>
-    <div class="service">
-      <span>👌 Оформяне на вежди</span>
-      <span class="price">2 €</span>
-    </div>
-    <div class="service">
-      <span>🧔 Оформяне на брада</span>
-      <span class="price">3 €</span>
-    </div>
-    <div class="service">
-      <span>⭐ Комплект</span>
-      <span class="price">10 €</span>
-    </div>
-  </section>
-
-  <section id="hours">
-    <h2>Работно време</h2>
-    <p class="info">🕒 От неделя до петък</p>
-  </section>
-
-  <section id="booking">
-    <h2>Запази своя час</h2>
-    <p>Попълни формата, за да подготвиш заявка за час.</p>
-
-    <form class="booking" id="bookingForm">
-      <label for="name">Твоето име</label>
-      <input id="name" name="name" required placeholder="Въведи име">
-
-      <label for="phone">Телефон за връзка</label>
-      <input id="phone" name="phone" type="tel" required placeholder="Въведи телефон">
-
-      <label for="service">Избери услуга</label>
-      <select id="service" name="service" required>
-        <option value="">Избери услуга</option>
-        <option>Подстригване — 7 €</option>
-        <option>Вежди — 2 €</option>
-        <option>Брада — 3 €</option>
-        <option>Комплект — 10 €</option>
-      </select>
-
-      <label for="date">Желана дата</label>
-      <input id="date" name="date" type="date" required>
-
-      <label for="time">Желан час</label>
-      <input id="time" name="time" type="time" required>
-
-      <label for="message">Допълнителна информация (по желание)</label>
-      <textarea id="message" name="message" rows="3"
-        placeholder="Напиши съобщение"></textarea>
-
-      <button class="btn" type="submit">Подготви заявката</button>
-
-      <p class="note">
-        Следващата стъпка е да свържем формата с телефон или услуга
-        за записвания, за да получаваш заявките наистина.
-      </p>
-    </form>
-    <p id="result" class="info" aria-live="polite"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Контакти</h2>
-    <p class="info">
-      📍 ул. Банска 36, Кюстендил
-    </p>
-    <p class="info">
-      📞 Телефонът за контакт ще добавим тук.
-    </p>
-  </section>
-
-  <footer>
-    <p>© BARBER SHOP | Кюстендил</p>
-    <p>Стилът започва оттук. 💈</p>
-  </footer>
-
-  <script>
-    const dateInput = document.getElementById("date");
-    const today = new Date();
-    const localToday = new Date(
-      today.getTime() - today.getTimezoneOffset() * 60000
-    ).toISOString().slice(0, 10);
-
-    dateInput.min = localToday;
-
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("result").textContent =
-        "Формата е попълнена, но заявката още не е изпратена до бръснарницата. Нужно е да свържем формата с услуга за записвания.";
-    });
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Shop | Кюстендил</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      min-height: 390px;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #493817 0%, #17130d 40%, #090909 80%);
-      border-bottom: 2px solid #c9a44c;
-    }
-
-    header .symbol {
-      font-size: 55px;
-    }
-
-    h1 {
-      color: #d8b45a;
-      font-size: clamp(32px, 7vw, 54px);
-      margin: 12px 0;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      color: #ddd;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d8b45a;
-      color: #111;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: #f0d58b;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 22px;
-      padding: 18px 10px;
-      background: #181818;
-      border-bottom: 1px solid #383024;
-    }
-
-    nav a {
-      color: #e2c16e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px 22px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #d8b45a;
-      font-size: 29px;
-      margin-top: 0;
-    }
-
-    .service {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 17px;
-      margin: 10px 0;
-      background: #1b1b1b;
-      border: 1px solid #3b3323;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .price {
-      color: #e5c36d;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .info {
-      line-height: 1.9;
-      color: #ddd;
-    }
-
-    .booking {
-      background: #191610;
-      border: 1px solid #80652c;
-      border-radius: 12px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      color: #e4c775;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #101010;
-      color: white;
-      font-size: 16px;
-    }
-
-    .booking .btn {
-      width: 100%;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: #080808;
-      border-top: 1px solid #80652c;
-      color: #aaa;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="symbol">✂️</div>
-    <h1>BARBER SHOP</h1>
-    <p>Стил. Прецизност. Класа.</p>
-    <a class="btn" href="#booking">Запази час</a>
-  </header>
-
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#hours">Работно време</a>
-    <a href="#contact">Контакти</a>
-    <a href="#booking">Запази час</a>
-  </nav>
-
-  <section id="services">
-    <h2>Нашите услуги</h2>
-    <div class="service">
-      <span>✂️ Подстригване</span>
-      <span class="price">7 €</span>
-    </div>
-    <div class="service">
-      <span>👌 Оформяне на вежди</span>
-      <span class="price">2 €</span>
-    </div>
-    <div class="service">
-      <span>🧔 Оформяне на брада</span>
-      <span class="price">3 €</span>
-    </div>
-    <div class="service">
-      <span>⭐ Комплект</span>
-      <span class="price">10 €</span>
-    </div>
-  </section>
-
-  <section id="hours">
-    <h2>Работно време</h2>
-    <p class="info">🕒 От неделя до петък</p>
-  </section>
-
-  <section id="booking">
-    <h2>Запази своя час</h2>
-    <p>Попълни формата, за да подготвиш заявка за час.</p>
-
-    <form class="booking" id="bookingForm">
-      <label for="name">Твоето име</label>
-      <input id="name" name="name" required placeholder="Въведи име">
-
-      <label for="phone">Телефон за връзка</label>
-      <input id="phone" name="phone" type="tel" required placeholder="Въведи телефон">
-
-      <label for="service">Избери услуга</label>
-      <select id="service" name="service" required>
-        <option value="">Избери услуга</option>
-        <option>Подстригване — 7 €</option>
-        <option>Вежди — 2 €</option>
-        <option>Брада — 3 €</option>
-        <option>Комплект — 10 €</option>
-      </select>
-
-      <label for="date">Желана дата</label>
-      <input id="date" name="date" type="date" required>
-
-      <label for="time">Желан час</label>
-      <input id="time" name="time" type="time" required>
-
-      <label for="message">Допълнителна информация (по желание)</label>
-      <textarea id="message" name="message" rows="3"
-        placeholder="Напиши съобщение"></textarea>
-
-      <button class="btn" type="submit">Подготви заявката</button>
-
-      <p class="note">
-        Следващата стъпка е да свържем формата с телефон или услуга
-        за записвания, за да получаваш заявките наистина.
-      </p>
-    </form>
-    <p id="result" class="info" aria-live="polite"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Контакти</h2>
-    <p class="info">
-      📍 ул. Банска 36, Кюстендил
-    </p>
-    <p class="info">
-      📞 Телефонът за контакт ще добавим тук.
-    </p>
-  </section>
-
-  <footer>
-    <p>© BARBER SHOP | Кюстендил</p>
-    <p>Стилът започва оттук. 💈</p>
-  </footer>
-
-  <script>
-    const dateInput = document.getElementById("date");
-    const today = new Date();
-    const localToday = new Date(
-      today.getTime() - today.getTimezoneOffset() * 60000
-    ).toISOString().slice(0, 10);
-
-    dateInput.min = localToday;
-
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("result").textContent =
-        "Формата е попълнена, но заявката още не е изпратена до бръснарницата. Нужно е да свържем формата с услуга за записвания.";
-    });
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Shop | Кюстендил</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      min-height: 390px;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #493817 0%, #17130d 40%, #090909 80%);
-      border-bottom: 2px solid #c9a44c;
-    }
-
-    header .symbol {
-      font-size: 55px;
-    }
-
-    h1 {
-      color: #d8b45a;
-      font-size: clamp(32px, 7vw, 54px);
-      margin: 12px 0;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      color: #ddd;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d8b45a;
-      color: #111;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: #f0d58b;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 22px;
-      padding: 18px 10px;
-      background: #181818;
-      border-bottom: 1px solid #383024;
-    }
-
-    nav a {
-      color: #e2c16e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px 22px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #d8b45a;
-      font-size: 29px;
-      margin-top: 0;
-    }
-
-    .service {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 17px;
-      margin: 10px 0;
-      background: #1b1b1b;
-      border: 1px solid #3b3323;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .price {
-      color: #e5c36d;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .info {
-      line-height: 1.9;
-      color: #ddd;
-    }
-
-    .booking {
-      background: #191610;
-      border: 1px solid #80652c;
-      border-radius: 12px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      color: #e4c775;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #101010;
-      color: white;
-      font-size: 16px;
-    }
-
-    .booking .btn {
-      width: 100%;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: #080808;
-      border-top: 1px solid #80652c;
-      color: #aaa;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="symbol">✂️</div>
-    <h1>BARBER SHOP</h1>
-    <p>Стил. Прецизност. Класа.</p>
-    <a class="btn" href="#booking">Запази час</a>
-  </header>
-
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#hours">Работно време</a>
-    <a href="#contact">Контакти</a>
-    <a href="#booking">Запази час</a>
-  </nav>
-
-  <section id="services">
-    <h2>Нашите услуги</h2>
-    <div class="service">
-      <span>✂️ Подстригване</span>
-      <span class="price">7 €</span>
-    </div>
-    <div class="service">
-      <span>👌 Оформяне на вежди</span>
-      <span class="price">2 €</span>
-    </div>
-    <div class="service">
-      <span>🧔 Оформяне на брада</span>
-      <span class="price">3 €</span>
-    </div>
-    <div class="service">
-      <span>⭐ Комплект</span>
-      <span class="price">10 €</span>
-    </div>
-  </section>
-
-  <section id="hours">
-    <h2>Работно време</h2>
-    <p class="info">🕒 От неделя до петък</p>
-  </section>
-
-  <section id="booking">
-    <h2>Запази своя час</h2>
-    <p>Попълни формата, за да подготвиш заявка за час.</p>
-
-    <form class="booking" id="bookingForm">
-      <label for="name">Твоето име</label>
-      <input id="name" name="name" required placeholder="Въведи име">
-
-      <label for="phone">Телефон за връзка</label>
-      <input id="phone" name="phone" type="tel" required placeholder="Въведи телефон">
-
-      <label for="service">Избери услуга</label>
-      <select id="service" name="service" required>
-        <option value="">Избери услуга</option>
-        <option>Подстригване — 7 €</option>
-        <option>Вежди — 2 €</option>
-        <option>Брада — 3 €</option>
-        <option>Комплект — 10 €</option>
-      </select>
-
-      <label for="date">Желана дата</label>
-      <input id="date" name="date" type="date" required>
-
-      <label for="time">Желан час</label>
-      <input id="time" name="time" type="time" required>
-
-      <label for="message">Допълнителна информация (по желание)</label>
-      <textarea id="message" name="message" rows="3"
-        placeholder="Напиши съобщение"></textarea>
-
-      <button class="btn" type="submit">Подготви заявката</button>
-
-      <p class="note">
-        Следващата стъпка е да свържем формата с телефон или услуга
-        за записвания, за да получаваш заявките наистина.
-      </p>
-    </form>
-    <p id="result" class="info" aria-live="polite"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Контакти</h2>
-    <p class="info">
-      📍 ул. Банска 36, Кюстендил
-    </p>
-    <p class="info">
-      📞 Телефонът за контакт ще добавим тук.
-    </p>
-  </section>
-
-  <footer>
-    <p>© BARBER SHOP | Кюстендил</p>
-    <p>Стилът започва оттук. 💈</p>
-  </footer>
-
-  <script>
-    const dateInput = document.getElementById("date");
-    const today = new Date();
-    const localToday = new Date(
-      today.getTime() - today.getTimezoneOffset() * 60000
-    ).toISOString().slice(0, 10);
-
-    dateInput.min = localToday;
-
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("result").textContent =
-        "Формата е попълнена, но заявката още не е изпратена до бръснарницата. Нужно е да свържем формата с услуга за записвания.";
-    });
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Shop | Кюстендил</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      min-height: 390px;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #493817 0%, #17130d 40%, #090909 80%);
-      border-bottom: 2px solid #c9a44c;
-    }
-
-    header .symbol {
-      font-size: 55px;
-    }
-
-    h1 {
-      color: #d8b45a;
-      font-size: clamp(32px, 7vw, 54px);
-      margin: 12px 0;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      color: #ddd;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d8b45a;
-      color: #111;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: #f0d58b;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 22px;
-      padding: 18px 10px;
-      background: #181818;
-      border-bottom: 1px solid #383024;
-    }
-
-    nav a {
-      color: #e2c16e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px 22px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #d8b45a;
-      font-size: 29px;
-      margin-top: 0;
-    }
-
-    .service {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 17px;
-      margin: 10px 0;
-      background: #1b1b1b;
-      border: 1px solid #3b3323;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .price {
-      color: #e5c36d;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .info {
-      line-height: 1.9;
-      color: #ddd;
-    }
-
-    .booking {
-      background: #191610;
-      border: 1px solid #80652c;
-      border-radius: 12px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      color: #e4c775;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #101010;
-      color: white;
-      font-size: 16px;
-    }
-
-    .booking .btn {
-      width: 100%;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: #080808;
-      border-top: 1px solid #80652c;
-      color: #aaa;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="symbol">✂️</div>
-    <h1>BARBER SHOP</h1>
-    <p>Стил. Прецизност. Класа.</p>
-    <a class="btn" href="#booking">Запази час</a>
-  </header>
-
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#hours">Работно време</a>
-    <a href="#contact">Контакти</a>
-    <a href="#booking">Запази час</a>
-  </nav>
-
-  <section id="services">
-    <h2>Нашите услуги</h2>
-    <div class="service">
-      <span>✂️ Подстригване</span>
-      <span class="price">7 €</span>
-    </div>
-    <div class="service">
-      <span>👌 Оформяне на вежди</span>
-      <span class="price">2 €</span>
-    </div>
-    <div class="service">
-      <span>🧔 Оформяне на брада</span>
-      <span class="price">3 €</span>
-    </div>
-    <div class="service">
-      <span>⭐ Комплект</span>
-      <span class="price">10 €</span>
-    </div>
-  </section>
-
-  <section id="hours">
-    <h2>Работно време</h2>
-    <p class="info">🕒 От неделя до петък</p>
-  </section>
-
-  <section id="booking">
-    <h2>Запази своя час</h2>
-    <p>Попълни формата, за да подготвиш заявка за час.</p>
-
-    <form class="booking" id="bookingForm">
-      <label for="name">Твоето име</label>
-      <input id="name" name="name" required placeholder="Въведи име">
-
-      <label for="phone">Телефон за връзка</label>
-      <input id="phone" name="phone" type="tel" required placeholder="Въведи телефон">
-
-      <label for="service">Избери услуга</label>
-      <select id="service" name="service" required>
-        <option value="">Избери услуга</option>
-        <option>Подстригване — 7 €</option>
-        <option>Вежди — 2 €</option>
-        <option>Брада — 3 €</option>
-        <option>Комплект — 10 €</option>
-      </select>
-
-      <label for="date">Желана дата</label>
-      <input id="date" name="date" type="date" required>
-
-      <label for="time">Желан час</label>
-      <input id="time" name="time" type="time" required>
-
-      <label for="message">Допълнителна информация (по желание)</label>
-      <textarea id="message" name="message" rows="3"
-        placeholder="Напиши съобщение"></textarea>
-
-      <button class="btn" type="submit">Подготви заявката</button>
-
-      <p class="note">
-        Следващата стъпка е да свържем формата с телефон или услуга
-        за записвания, за да получаваш заявките наистина.
-      </p>
-    </form>
-    <p id="result" class="info" aria-live="polite"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Контакти</h2>
-    <p class="info">
-      📍 ул. Банска 36, Кюстендил
-    </p>
-    <p class="info">
-      📞 Телефонът за контакт ще добавим тук.
-    </p>
-  </section>
-
-  <footer>
-    <p>© BARBER SHOP | Кюстендил</p>
-    <p>Стилът започва оттук. 💈</p>
-  </footer>
-
-  <script>
-    const dateInput = document.getElementById("date");
-    const today = new Date();
-    const localToday = new Date(
-      today.getTime() - today.getTimezoneOffset() * 60000
-    ).toISOString().slice(0, 10);
-
-    dateInput.min = localToday;
-
-    
-    });
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barber Shop | Кюстендил</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      min-height: 390px;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #493817 0%, #17130d 40%, #090909 80%);
-      border-bottom: 2px solid #c9a44c;
-    }
-
-    header .symbol {
-      font-size: 55px;
-    }
-
-    h1 {
-      color: #d8b45a;
-      font-size: clamp(32px, 7vw, 54px);
-      margin: 12px 0;
-      letter-spacing: 3px;
-    }
-
-    header p {
-      color: #ddd;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d8b45a;
-      color: #111;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 12px;
-    }
-
-    .btn:hover {
-      background: #f0d58b;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 22px;
-      padding: 18px 10px;
-      background: #181818;
-      border-bottom: 1px solid #383024;
-    }
-
-    nav a {
-      color: #e2c16e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px 22px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #d8b45a;
-      font-size: 29px;
-      margin-top: 0;
-    }
-
-    .service {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 17px;
-      margin: 10px 0;
-      background: #1b1b1b;
-      border: 1px solid #3b3323;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .price {
-      color: #e5c36d;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .info {
-      line-height: 1.9;
-      color: #ddd;
-    }
-
-    .booking {
-      background: #191610;
-      border: 1px solid #80652c;
-      border-radius: 12px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      color: #e4c775;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #101010;
-      color: white;
-      font-size: 16px;
-    }
-
-    .booking .btn {
-      width: 100%;
-    }
-
-    .note {
-      color: #bbb;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: #080808;
-      border-top: 1px solid #80652c;
-      color: #aaa;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="symbol">✂️</div>
-    <h1>BARBER SHOP</h1>
-    <p>Стил. Прецизност. Класа.</p>
-    <a class="btn" href="#booking">Запази час</a>
-  </header>
-
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#hours">Работно време</a>
-    <a href="#contact">Контакти</a>
-    <a href="#booking">Запази час</a>
-  </nav>
-
-  <section id="services">
-    <h2>Нашите услуги</h2>
-    <div class="service">
-      <span>✂️ Подстригване</span>
-      <span class="price">7 €</span>
-    </div>
-    <div class="service">
-      <span>👌 Оформяне на вежди</span>
-      <span class="price">2 €</span>
-    </div>
-    <div class="service">
-      <span>🧔 Оформяне на брада</span>
-      <span class="price">3 €</span>
-    </div>
-    <div class="service">
-      <span>⭐ Комплект</span>
-      <span class="price">10 €</span>
-    </div>
-  </section>
-
-  <section id="hours">
-    <h2>Работно време</h2>
-    <p class="info">🕒 От неделя до петък</p>
-  </section>
-
-  <section id="booking">
-    <h2>Запази своя час</h2>
-    <p>Попълни формата, за да подготвиш заявка за час.</p>
-<form class="booking" id="bookingForm" action="https://formsubmit.co/ivanstoqnov0078@gmail.com" method="POST">
-      <label for="name">Твоето име</label>
-      <input id="name" name="name" required placeholder="Въведи име">
-
-      <label for="phone">Телефон за връзка</label>
-      <input id="phone" name="phone" type="tel" required placeholder="Въведи телефон">
-
-      <label for="service">Избери услуга</label>
-      <select id="service" name="service" required>
-        <option value="">Избери услуга</option>
-        <option>Подстригване — 7 €</option>
-        <option>Вежди — 2 €</option>
-        <option>Брада — 3 €</option>
-        <option>Комплект — 10 €</option>
-      </select>
-
-      <label for="date">Желана дата</label>
-      <input id="date" name="date" type="date" required>
-
-      <label for="time">Желан час</label>
-      <input id="time" name="time" type="time" required>
-
-      <label for="message">Допълнителна информация (по желание)</label>
-      <textarea id="message" name="message" rows="3"
-        placeholder="Напиши съобщение"></textarea>
-
-      <button class="btn" type="submit">Подготви заявката</button>
-
-      <p class="note">
-        Следващата стъпка е да свържем формата с телефон или услуга
-        за записвания, за да получаваш заявките наистина.
-      </p>
-    </form>
-    <p id="result" class="info" aria-live="polite"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Контакти</h2>
-    <p class="info">
-      📍 ул. Банска 36, Кюстендил
-    </p>
-    <p class="info">
-      📞 Телефонът за контакт ще добавим тук.
-    </p>
-  </section>
-
-  <footer>
-    <p>© BARBER SHOP | Кюстендил</p>
-    <p>Стилът започва оттук. 💈</p>
-  </footer>
-
-  <script>
-    const dateInput = document.getElementById("date");
-    const today = new Date();
-    const localToday = new Date(
-      today.getTime() - today.getTimezoneOffset() * 60000
-    ).toISOString().slice(0, 10);
-
-    dateInput.min = localToday;
-
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("result").textContent =
-        "Формата е попълнена, но заявката още не е изпратена до бръснарницата. Нужно е да свържем формата с услуга за записвания.";
-    });
-  </script>
- <section id="moqta-rabota" style="padding:40px 20px;background:#111;color:white;text-align:center;">
-  <h2>✂️ МОЯТА РАБОТА — IVAN BARBER</h2>
-  <p>Професионални мъжки подстрижки</p>
-
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
-    <div style="width:280px;max-width:100%;">
-      <img src="buzz-cut.jpg" alt="Buzz Cut" style="width:100%;border-radius:12px;">
-      <h3>Buzz Cut</h3>
-    </div>
-
-    <div style="width:280px;max-width:100%;">
-      <img src="low-fade.jpg" alt="Low Fade" style="width:100%;border-radius:12px;">
-      <h3>Low Fade</h3>
-    </div>
-
-    <div style="width:280px;max-width:100%;">
-      <img src="taper-fade.jpg" alt="Taper Fade" style="width:100%;border-radius:12px;">
-      <h3>Taper Fade</h3>
-    </div>
   </div>
 </section>
 
-<section id="location" style="background:#111;color:white;padding:40px 20px;text-align:center;">
-  <h2 style="color:#d4af37;">📍 Къде се намираме</h2>
-  <p>Посети нашата бръснарница в Кюстендил!</p>
+<section id="program">
+  <div class="section-title">
+    <span>Обучение</span>
+    <h2>Какво ще научиш</h2>
+    <p>Основни теми и умения в света на бръснарството.</p>
+  </div>
 
-  <iframe
-    src="https://maps.google.com/maps?q=Kyustendil%2C%20Bulgaria&output=embed"
-    width="100%"
-    height="300"
-    style="border:0;border-radius:12px;max-width:700px;"
-    loading="lazy"
-    allowfullscreen>
-  </iframe>
+  <div class="cards">
+    <article class="card">
+      <div class="number">01</div>
+      <h3>Инструменти и хигиена</h3>
+      <p>Запознаване с инструментите, тяхната поддръжка и правилната хигиена на работното място.</p>
+    </article>
 
-  <p>
-    <a href="https://maps.app.goo.gl/uuguYJTScKS8MLzf7?g_st=ic"
-       target="_blank"
-       rel="noopener"
-       style="display:inline-block;background:#d4af37;color:#111;padding:14px 22px;border-radius:8px;text-decoration:none;font-weight:bold;">
-      🧭 Навигирай до нас
-    </a>
-  </p>
+    <article class="card">
+      <div class="number">02</div>
+      <h3>Основи на подстригването</h3>
+      <p>Форми, пропорции и основни принципи при мъжкото подстригване.</p>
+    </article>
+
+    <article class="card">
+      <div class="number">03</div>
+      <h3>Fade техники</h3>
+      <p>Запознаване с различни стилове и принципите за плавно преливане.</p>
+    </article>
+
+    <article class="card">
+      <div class="number">04</div>
+      <h3>Оформяне на брада</h3>
+      <p>Основи на оформянето и поддържането на брада.</p>
+    </article>
+
+    <article class="card">
+      <div class="number">05</div>
+      <h3>Работа с клиенти</h3>
+      <p>Комуникация, отношение и разбиране на желанията на клиента.</p>
+    </article>
+
+    <article class="card">
+      <div class="number">06</div>
+      <h3>Практически умения</h3>
+      <p>Постепенно развиване на уменията чрез упражнения и практика.</p>
+    </article>
+  </div>
 </section>
+
+<section class="audience">
+  <div class="section-title">
+    <span>За кого е</span>
+    <h2>Твоят старт започва тук</h2>
+  </div>
+
+  <div class="audience-list">
+    <div class="audience-item">За начинаещи, които искат да научат основите.</div>
+    <div class="audience-item">За хора с интерес към мъжките прически и бръснарството.</div>
+    <div class="audience-item">За тези, които искат да развиват уменията си и да практикуват.</div>
+  </div>
+</section>
+
+<section class="application" id="application">
+  <div class="section-title">
+    <span>Запиши се</span>
+    <h2>Кандидатстване за обучение</h2>
+    <p>Попълни формата и ще се свържем с теб за повече информация.</p>
+  </div>
+
+  <div class="form-wrap">
+    <form action="https://formsubmit.co/ivanstoqnov0078@gmail.com" method="POST">
+
+      <input type="hidden" name="_subject" value="Нова кандидатура - IVAN BARBER ACADEMY">
+      <input type="hidden" name="_template" value="table">
+
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <label for="name">Твоето име *</label>
+      <input id="name" type="text" name="Име" placeholder="Въведи име" required>
+
+      <label for="phone">Телефон *</label>
+      <input id="phone" type="tel" name="Телефон" placeholder="Въведи телефон" required>
+
+      <label for="email">Имейл (по желание)</label>
+      <input id="email" type="email" name="email" placeholder="Въведи имейл">
+
+      <label for="experience">Имаш ли опит?</label>
+      <select id="experience" name="Опит">
+        <option value="Нямам опит">Нямам опит</option>
+        <option value="Имам малко опит">Имам малко опит</option>
+        <option value="Имам опит">Имам опит</option>
+      </select>
+
+      <label for="message">Допълнително съобщение</label>
+      <textarea id="message" name="Съобщение" placeholder="Разкажи ни малко за себе си..."></textarea>
+
+      <button class="button" type="submit">ИЗПРАТИ КАНДИДАТУРАТА</button>
+
+      <p class="form-note">
+        С изпращането на формата предоставяш посочените данни
+        за целите на връзка относно кандидатурата ти.
+        Не въвеждай чувствителна лична информация.
+      </p>
+    </form>
+  </div>
+</section>
+
+<section class="contacts" id="contacts">
+  <div class="section-title">
+    <span>Свържи се с нас</span>
+    <h2>Контакти</h2>
+    <p>Имаш въпроси за обучението? Пиши ни.</p>
+  </div>
+
+  <div class="contact-buttons">
+    <a class="contact-button" href="viber://chat?number=%2B359896030094">
+      Viber
+    </a>
+
+    <a class="contact-button"
+       href="https://www.instagram.com/_kirilov_i/"
+       target="_blank" rel="noopener noreferrer">
+      Instagram
+    </a>
+
+    <a class="contact-button"
+       href="https://www.facebook.com/profile.php?id=100080136356199&locale=bg_BG"
+       target="_blank" rel="noopener noreferrer">
+      Messenger
+    </a>
+  </div>
+
+  <div class="phone">0896 030 094</div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 <span>IVAN BARBER ACADEMY</span> — Всички права запазени.
+</footer>
 
 </body>
 </html>
-
