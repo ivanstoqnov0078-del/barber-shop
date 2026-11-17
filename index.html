@@ -538,6 +538,55 @@ footer span {
 <footer>
   © 2026 <span>IVAN BARBER ACADEMY</span> — Всички права запазени.
 </footer>
+<!-- ADMIN LOGIN -->
+<section id="admin-login" style="display:none; background:#111; color:white; padding:30px; text-align:center;">
+  <h2 style="color:#d8b45a;">IVAN BARBER ACADEMY</h2>
+  <h3>Вход за администратора</h3>
 
+  <input id="admin-email" type="email" placeholder="Имейл"
+    style="display:block; margin:10px auto; padding:12px; width:90%; max-width:350px;">
+
+  <input id="admin-password" type="password" placeholder="Парола"
+    style="display:block; margin:10px auto; padding:12px; width:90%; max-width:350px;">
+
+  <button onclick="adminLogin()"
+    style="padding:12px 25px; background:#d8b45a; border:0; cursor:pointer;">
+    ВХОД
+  </button>
+
+  <p id="admin-message"></p>
+</section>
+
+<button onclick="document.getElementById('admin-login').style.display='block'"
+  style="position:fixed; bottom:15px; right:15px; background:#d8b45a; padding:12px; border:0; cursor:pointer;">
+  Вход за администратора
+</button>
+
+<script>
+const SUPABASE_URL = "https://ypahztaolbszogpcifld.supabase.co";
+const SUPABASE_KEY = "sb_publishable_arkExqm26eR9h1lHvSGB4w_atkh7nyZ;
+
+const academyDB = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function adminLogin() {
+  const email = document.getElementById("admin-email").value;
+  const password = document.getElementById("admin-password").value;
+  const message = document.getElementById("admin-message");
+
+  message.textContent = "Проверка...";
+
+  const { data, error } = await academyDB.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  message.textContent = error
+    ? "Грешка: " + error.message
+    : "Успешен вход! Добре дошъл в администрацията.";
+}
+</script>
 </body>
 </html>
