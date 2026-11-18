@@ -591,6 +591,15 @@ const academyDB = window.supabase.createClient(
   SUPABASE_KEY
 );
 
+academyDB.auth.onAuthStateChange((event, session) => {
+  if (event === "PASSWORD_RECOVERY") {
+    document.getElementById("admin-login").style.display = "block";
+    document.getElementById("new-password-box").style.display = "block";
+    document.getElementById("admin-message").textContent =
+      "Въведи новата си парола.";
+  }
+});
+
 async function adminLogin() {
   const email = document.getElementById("admin-email").value.trim();
   const password = document.getElementById("admin-password").value;
