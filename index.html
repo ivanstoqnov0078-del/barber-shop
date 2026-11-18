@@ -592,25 +592,13 @@ const academyDB = window.supabase.createClient(
 );
 
 async function adminLogin() {
-  const email = document.getElementById("admin-email").value;
+  const email = document.getElementById("admin-email").value.trim();
   const password = document.getElementById("admin-password").value;
   const message = document.getElementById("admin-message");
 
   message.textContent = "Проверка...";
 
-  const { data, error } = await academyDB.auth.signInWithPassword({
-    email,
-    password
-  });
-
-  message.textContent = error
-    ? "Грешка: " + error.message
-    : "Успешен вход! Добре дошъл в администрацията.";
-
-}
-  message.textContent = "Проверка...";
-
-  const { data, error } = await academyDB.auth.signInWithPassword({
+  const { error } = await academyDB.auth.signInWithPassword({
     email,
     password
   });
@@ -619,14 +607,17 @@ async function adminLogin() {
     ? "Грешка: " + error.message
     : "Успешен вход! Добре дошъл в администрацията.";
 }
+
 async function resetAdminPassword() {
-  const email = document.getElementById("admin-email").value;
+  const email = document.getElementById("admin-email").value.trim();
   const message = document.getElementById("admin-message");
 
   if (!email) {
     message.textContent = "Първо въведи имейла си!";
     return;
   }
+
+  message.textContent = "Изпращане на линк...";
 
   const { error } = await academyDB.auth.resetPasswordForEmail(email, {
     redirectTo: "https://ivanstoqnov0078-del.github.io/barber-shop/"
@@ -654,6 +645,7 @@ async function saveNewAdminPassword() {
     ? "Грешка: " + error.message
     : "Новата парола е запазена успешно!";
 }
+
 </script>
 </body>
 </html>
