@@ -558,6 +558,18 @@ footer span {
   </button>
 
   <p id="admin-message"></p>
+  <button onclick="resetAdminPassword()"
+  style="padding:10px 20px; background:#222; color:#d8b45a; border:1px solid #d8b45a; cursor:pointer; margin-top:10px;">
+  ЗАБРАВЕНА ПАРОЛА?
+</button>
+
+<div id="new-password-box" style="display:none;">
+  <input id="new-admin-password" type="password"
+    placeholder="Нова парола"
+    style="display:block; margin:10px auto; padding:12px; width:90%; max-width:350px;">
+
+  <button onclick="saveNewAdminPassword()">ЗАПАЗИ НОВАТА ПАРОЛА</button>
+</div>
 </section>
 
 <button type="button" id="open-admin-button"
@@ -594,6 +606,53 @@ async function adminLogin() {
   message.textContent = error
     ? "Грешка: " + error.message
     : "Успешен вход! Добре дошъл в администрацията.";
+
+}
+  message.textContent = "Проверка...";
+
+  const { data, error } = await academyDB.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  message.textContent = error
+    ? "Грешка: " + error.message
+    : "Успешен вход! Добре дошъл в администрацията.";
+}
+async function resetAdminPassword() {
+  const email = document.getElementById("admin-email").value;
+  const message = document.getElementById("admin-message");
+
+  if (!email) {
+    message.textContent = "Първо въведи имейла си!";
+    return;
+  }
+
+  const { error } = await academyDB.auth.resetPasswordForEmail(email, {
+    redirectTo: "https://ivanstoqnov0078-del.github.io/barber-shop/"
+  });
+
+  message.textContent = error
+    ? "Грешка: " + error.message
+    : "Изпратихме линк за нова парола на имейла ти.";
+}
+
+async function saveNewAdminPassword() {
+  const password = document.getElementById("new-admin-password").value;
+  const message = document.getElementById("admin-message");
+
+  if (!password || password.length < 8) {
+    message.textContent = "Паролата трябва да е поне 8 символа.";
+    return;
+  }
+
+  const { error } = await academyDB.auth.updateUser({
+    password: password
+  });
+
+  message.textContent = error
+    ? "Грешка: " + error.message
+    : "Новата парола е запазена успешно!";
 }
 </script>
 </body>
