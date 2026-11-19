@@ -349,10 +349,85 @@ footer span {
 }
 </head>
 }
+#academy-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle, #302719 0%, #090909 65%, #000 100%);
+  animation: introFadeOut 1s ease 3.5s forwards;
+}
+
+.intro-content {
+  padding: 25px;
+  animation: introAppear 1.5s ease both;
+}
+
+.intro-content p:first-child {
+  color: #d8b45a;
+  letter-spacing: 5px;
+  font-size: 12px;
+}
+
+.intro-content h1 {
+  color: white;
+  font-size: clamp(38px, 8vw, 75px);
+  margin-top: 20px;
+}
+
+.intro-content h1 span,
+.intro-content h2 {
+  color: #d8b45a;
+}
+
+.intro-content h2 {
+  font-size: 35px;
+  letter-spacing: 8px;
+}
+
+.intro-line {
+  width: 0;
+  height: 2px;
+  background: #d8b45a;
+  margin: 25px auto;
+  animation: lineGrow 1.5s ease .5s forwards;
+}
+
+.intro-subtitle {
+  color: #eee;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+@keyframes introAppear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineGrow {
+  to { width: 220px; }
+}
+
+@keyframes introFadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+
+<div id="academy-intro">
+  <div class="intro-content">
+    <p>KYUSTENDIL • BULGARIA</p>
+    <h1>IVAN <span>BARBER</span></h1>
+    <h2>ACADEMY</h2>
+    <div class="intro-line"></div>
+    <p class="intro-subtitle">ТВОЯТ ПЪТ КЪМ ПРОФЕСИЯТА BARBER ЗАПОЧВА ТУК</p>
+  </div>
+</div>
 
 <header>
   <nav>
