@@ -556,6 +556,11 @@ footer span {
 <footer>
   © 2026 <span>IVAN BARBER ACADEMY</span> — Всички права запазени.
 </footer>
+<button id="open-admin-button"
+  style="display:block; margin:20px auto; padding:12px 25px; background:#d8b45a; color:#111; border:0; cursor:pointer; border-radius:5px; font-weight:bold;">
+  АДМИНИСТРАТОР
+</button>
+  
 <!-- ADMIN LOGIN -->
 <section id="admin-login" style="display:none; background:#111; color:white; padding:30px; text-align:center;">
   <h2 style="color:#d8b45a;">IVAN BARBER ACADEMY</h2>
@@ -586,48 +591,42 @@ footer span {
   <button onclick="saveNewAdminPassword()">ЗАПАЗИ НОВАТА ПАРОЛА</button>
 </div>
 </section>
+
 <section id="applications-panel"
   style="display:none; background:#111; color:white; padding:30px; text-align:center;">
 
-  <h2 style="color:#d8b45a;"><div id="application-stats" style="
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
-  margin:25px auto;
-">
-<h2 style="color:#d8b45a;">КАНДИДАТУРИ</h2>
-    
-<div id="application-stats" style="
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
-  margin:25px auto;
-">
+  <h2 style="color:#d8b45a;">КАНДИДАТУРИ</h2>
 
-  <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
-    <h3 style="color:#d8b45a;">НОВИ</h3>
-    <p id="count-new" style="font-size:28px;">0</p>
+  <div id="application-stats" style="
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin:25px auto;
+  ">
+
+    <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
+      <h3 style="color:#d8b45a;">НОВИ</h3>
+      <p id="count-new" style="font-size:28px;">0</p>
+    </div>
+
+    <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
+      <h3 style="color:#d8b45a;">ОДОБРЕНИ</h3>
+      <p id="count-approved" style="font-size:28px;">0</p>
+    </div>
+
+    <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
+      <h3 style="color:#d8b45a;">ОТКАЗАНИ</h3>
+      <p id="count-rejected" style="font-size:28px;">0</p>
+    </div>
+
   </div>
 
-  <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
-    <h3 style="color:#d8b45a;">ОДОБРЕНИ</h3>
-    <p id="count-approved" style="font-size:28px;">0</p>
+  <div id="applications-list">
+    Зареждане на кандидатурите...
   </div>
 
-  <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
-    <h3 style="color:#d8b45a;">ОТКАЗАНИ</h3>
-    <p id="count-rejected" style="font-size:28px;">0</p>
-  </div>
-
-</div>
-
-<div id="applications-list">
-  Зареждане на кандидатурите...
-</div>
-</button>
-
+</section>
 <script>
 document.getElementById("open-admin-button").addEventListener("click", function () {
   document.getElementById("admin-login").style.display = "block";
