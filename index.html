@@ -487,8 +487,7 @@ footer span {
   </div>
 
   <div class="form-wrap">
-    <form action="https://formsubmit.co/ivanstoqnov0078@gmail.com" method="POST">
-
+   <form id="application-form">
       <input type="hidden" name="_subject" value="Нова кандидатура - IVAN BARBER ACADEMY">
       <input type="hidden" name="_template" value="table">
 
@@ -670,7 +669,42 @@ async function saveNewAdminPassword() {
     ? "Грешка: " + error.message
     : "Новата парола е запазена успешно!";
 }
+document.getElementById("application-form").addEventListener("submit", async function(event) {
+  event.preventDefault();
 
+  const form = this;
+  const button = form.querySelector('button[type="submit"]');
+
+  const fullName = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const experience = document.getElementById("experience").value;
+  const message = document.getElementById("message").value.trim();
+
+  button.disabled = true;
+  button.textContent = "ИЗПРАЩАНЕ...";
+
+  const { error } = await academyDB
+    .from("applications")
+    .insert([{
+      full_name: fullName,
+      phone: phone,
+      email: email || null,
+      message: "Опит: " + experience + "\n" + message
+    }]);
+
+  if (error) {
+    alert("Грешка при изпращането: " + error.message);
+    button.disabled = false;
+    button.textContent = "ИЗПРАТИ КАНДИДАТУРАТА";
+    return;
+  }
+
+  alert("Кандидатурата е изпратена успешно!");
+  form.reset();
+  button.disabled = false;
+  button.textContent = "ИЗПРАТИ КАНДИДАТУРАТА";
+});
 </script>
 </body>
 </html>
