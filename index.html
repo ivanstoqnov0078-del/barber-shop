@@ -586,7 +586,16 @@ footer span {
   <button onclick="saveNewAdminPassword()">ЗАПАЗИ НОВАТА ПАРОЛА</button>
 </div>
 </section>
+<section id="applications-panel"
+  style="display:none; background:#111; color:white; padding:30px; text-align:center;">
 
+  <h2 style="color:#d8b45a;">КАНДИДАТУРИ</h2>
+
+  <div id="applications-list">
+    Зареждане на кандидатурите...
+  </div>
+
+</section>
 <button type="button" id="open-admin-button"
   style="position:fixed; bottom:15px; right:15px; background:#d8b45a; padding:12px; border:0; cursor:pointer; z-index:9999;">
   Вход за администратора
@@ -627,11 +636,90 @@ async function adminLogin() {
     password
   });
 
-  message.textContent = error
-    ? "Грешка: " + error.message
-    : "Успешен вход! Добре дошъл в администрацията.";
-}
+  if (error) {
+    message.textContent = "Грешка: " + error.message;
+    return;
+  }
 
+  message.textContent = "Успешен вход! Добре дошъл в администрацията.";
+
+  document.getElementById("applications-panel").style.display = "block";
+
+  loadApplications();
+}
+async function loadApplications() {
+  const list = document.getElementById("applications-list");
+
+  list.textContent = "Зареждане на кандидатурите...";
+
+  const { data, error } = await academyDB
+    .from("applications")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    list.textContent = "Грешка: " + error.message;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    list.textContent = "Все още няма кандидатури.";
+    return;
+  }
+
+  list.innerHTML = "";
+
+  data.forEach((app) => {
+    const item = document.createElement("div");
+    item.style.cssText = "background:#222; border:1px solid #b99748; padding:15px; margin:15px auto; max-width:600px; text-align:left;";
+
+    const heading = document.createElement("h3");
+    heading.style.color = "#d8b45a";
+    heading.textContent = app.full_name;
+
+    const details = document.createElement("p");
+    details.textContent =
+      "Телефон: " + app.phone +
+      " | Имейл: " + (app.email || "Няма") +
+      " | Допълнително: " + (app.message || "");
+
+    const status = document.createElement("p");
+    status.textContent = "Статус: " + app.status;
+
+    const select = document.createElement("select");
+
+    ["Нова", "Одобрена", "Отказана"].forEach((value) => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = value;
+      select.appendChild(option);
+    });
+
+    select.value = app.status;
+
+    const save = document.createElement("button");
+    save.textContent = "ЗАПАЗИ СТАТУСА";
+
+    save.onclick = async () => {
+      const { error } = await academyDB
+        .from("applications")
+        .update({ status: select.value })
+        .eq("id", app.id);
+
+      if (error) {
+        alert("Грешка: " + error.message);
+        return;
+      }
+
+      status.textContent = "Статус: " + select.value;
+      alert("Статусът е запазен!");
+    };
+
+   item.append(heading, details, status, select, save);
+    list.appendChild(item);
+  });
+}
+   
 async function resetAdminPassword() {
   const email = document.getElementById("admin-email").value.trim();
   const message = document.getElementById("admin-message");
