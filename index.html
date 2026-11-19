@@ -589,16 +589,43 @@ footer span {
 <section id="applications-panel"
   style="display:none; background:#111; color:white; padding:30px; text-align:center;">
 
-  <h2 style="color:#d8b45a;">КАНДИДАТУРИ</h2>
+  <h2 style="color:#d8b45a;"><div id="application-stats" style="
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin:25px auto;
+">
+<h2 style="color:#d8b45a;">КАНДИДАТУРИ</h2>
+    
+<div id="application-stats" style="
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin:25px auto;
+">
 
-  <div id="applications-list">
-    Зареждане на кандидатурите...
+  <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
+    <h3 style="color:#d8b45a;">НОВИ</h3>
+    <p id="count-new" style="font-size:28px;">0</p>
   </div>
 
-</section>
-<button type="button" id="open-admin-button"
-  style="position:fixed; bottom:15px; right:15px; background:#d8b45a; padding:12px; border:0; cursor:pointer; z-index:9999;">
-  Вход за администратора
+  <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
+    <h3 style="color:#d8b45a;">ОДОБРЕНИ</h3>
+    <p id="count-approved" style="font-size:28px;">0</p>
+  </div>
+
+  <div style="background:#222;border:1px solid #d8b45a;padding:20px;border-radius:10px;min-width:130px;">
+    <h3 style="color:#d8b45a;">ОТКАЗАНИ</h3>
+    <p id="count-rejected" style="font-size:28px;">0</p>
+  </div>
+
+</div>
+
+<div id="applications-list">
+  Зареждане на кандидатурите...
+</div>
 </button>
 
 <script>
@@ -647,6 +674,7 @@ async function adminLogin() {
 
   loadApplications();
 }
+
 async function loadApplications() {
   const list = document.getElementById("applications-list");
 
@@ -662,14 +690,25 @@ async function loadApplications() {
     return;
   }
 
-  if (!data || data.length === 0) {
+  const applications = data || [];
+
+  document.getElementById("count-new").textContent =
+    applications.filter(app => app.status === "Нова").length;
+
+  document.getElementById("count-approved").textContent =
+    applications.filter(app => app.status === "Одобрена").length;
+
+  document.getElementById("count-rejected").textContent =
+    applications.filter(app => app.status === "Отказана").length;
+
+  if (applications.length === 0) {
     list.textContent = "Все още няма кандидатури.";
     return;
   }
 
   list.innerHTML = "";
 
-  data.forEach((app) => {
+  applications.forEach((app) => {
     const item = document.createElement("div");
     item.style.cssText = "background:#222; border:1px solid #b99748; padding:15px; margin:15px auto; max-width:600px; text-align:left;";
 
@@ -682,6 +721,13 @@ async function loadApplications() {
       "Телефон: " + app.phone +
       " | Имейл: " + (app.email || "Няма") +
       " | Допълнително: " + (app.message || "");
+
+    const date = document.createElement("p");
+    date.style.color = "#d8b45a";
+    date.textContent = "Получена на: " +
+      (app.created_at
+        ? new Date(app.created_at).toLocaleString("bg-BG")
+        : "Няма дата");
 
     const status = document.createElement("p");
     status.textContent = "Статус: " + app.status;
@@ -711,14 +757,15 @@ async function loadApplications() {
         return;
       }
 
-      status.textContent = "Статус: " + select.value;
       alert("Статусът е запазен!");
+      await loadApplications();
     };
 
-   item.append(heading, details, status, select, save);
+    item.append(heading, details, date, status, select, save);
     list.appendChild(item);
   });
 }
+
    
 async function resetAdminPassword() {
   const email = document.getElementById("admin-email").value.trim();
