@@ -414,21 +414,25 @@ footer span {
 @keyframes introFadeOut {
   to { opacity: 0; visibility: hidden; }
 }
+.intro-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
 <div id="academy-intro">
-  <div class="intro-content">
-    <p>KYUSTENDIL • BULGARIA</p>
-    <h1>IVAN <span>BARBER</span></h1>
-    <h2>ACADEMY</h2>
-    <div class="intro-line"></div>
-    <p class="intro-subtitle">ТВОЯТ ПЪТ КЪМ ПРОФЕСИЯТА BARBER ЗАПОЧВА ТУК</p>
-  </div>
+  <img
+    src="d21b301d-acfc-49cd-bd16-628b5dc0d007.png"
+    alt="IVAN BARBER ACADEMY"
+    class="intro-image"
+  >
 </div>
-
 <header>
   <nav>
     <a class="logo" href="#home">IVAN BARBER ACADEMY</a>
